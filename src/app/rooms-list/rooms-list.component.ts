@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Room } from '../room';
 import { RoomsService } from '../rooms-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rooms-list',
@@ -9,14 +10,14 @@ import { RoomsService } from '../rooms-service.service';
 })
 export class RoomsListComponent implements OnInit{
 
-  rooms!:Room[]
+  rooms$!:Observable<Room[]>
 
-  constructor(public serv: RoomsService){
+  constructor(public serv: RoomsService){}
+
+  ngOnInit() {
+    this.rooms$=this.serv.getRooms()
   }
 
-  ngOnInit(){
-    this.serv.getRooms().subscribe(d=>{this.rooms=d});
-    console.log("Printing>>>"+this.rooms)
-  }
+
 
 }

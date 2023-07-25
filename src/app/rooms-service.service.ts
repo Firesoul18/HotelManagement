@@ -12,7 +12,7 @@ export class RoomsService {
   getRooms(): Observable<Room[]>{
     console.log("Calling Get...")
     // console.log(this.http.get('http://localhost:3000/rooms').subscribe(t=>{console.log(t)}))
-    return this.http.get<Room[]>('https://localhost:3000/rooms');
+    return this.http.get<Room[]>('http://localhost:3000/rooms');
   }
 
   constructor(private http:HttpClient) { }

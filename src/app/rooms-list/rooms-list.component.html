@@ -6,14 +6,15 @@
             <th scope="col">Amenities</th>
     </thead>
     <tbody>
-        <tr *ngFor="let r of rooms">
+        <tr *ngFor="let r of rooms$ | async as t">
             <th scope="row">{{r.id}}</th>
             <td>{{r.type}}</td>
             <td>{{r.price}}</td>
             <td><p *ngFor="let a of r.amenities">{{a}}</p></td>
-            <td>{{r.checkOutTime}}</td>
         </tr>
     </tbody>
 </table>
+
+<!-- <button class="btn btn-primary">{{btnText}}</button> -->
 
 <!-- <ng-template #noroom><ngb-alert>There is no room</ngb-alert></ng-template> -->
